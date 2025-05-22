@@ -1,6 +1,12 @@
 import {McpServer} from "@modelcontextprotocol/sdk/server/mcp.js";
 import {StdioServerTransport} from "@modelcontextprotocol/sdk/server/stdio.js";
 import {z} from 'zod';
+import express from 'express';
+import {PORT} from "./config/config";
+
+const app = express();
+
+app.use(express.json());
 
 // Create an MCP server
 const server = new McpServer({
@@ -48,7 +54,7 @@ async function getWeatherByCity(city: string) {
 // Add an addition tool
 server.tool('getWeatherByCity', {
     city: z.string(),
-}, async ({city}: { city: string }) => {
+}, async ({city}) => {
     return {
         content: [
             {
@@ -65,4 +71,7 @@ async function init() {
     await server.connect(transport);
 }
 
-init();
+app.listen(PORT, async () => {
+    await init();
+    console.log(`OAuth server running on http://localhost:${PORT}`);
+});
