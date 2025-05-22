@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "weather-data": {
+      "command": "node",
+      "args": ["/Users/padmanabhadas/Chayan_Personal/Node Js/mcp-servers/weather-mcp/src/server.ts"]
+    }
+  }
+}
