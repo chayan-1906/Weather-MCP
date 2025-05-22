@@ -6,7 +6,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "scripts": {
     "dev": "nodemon --exec 'ts-node' src/server.ts",
     "build": "tsc",
