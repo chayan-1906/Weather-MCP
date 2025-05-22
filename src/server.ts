@@ -1,7 +1,6 @@
 import {McpServer} from "@modelcontextprotocol/sdk/server/mcp.js";
 import {StdioServerTransport} from "@modelcontextprotocol/sdk/server/stdio.js";
 import {z} from 'zod';
-import axios from "axios";
 
 // Create an MCP server
 const server = new McpServer({
@@ -49,7 +48,7 @@ async function getWeatherByCity(city: string) {
 // Add an addition tool
 server.tool('getWeatherByCity', {
     city: z.string(),
-}, async ({city}) => {
+}, async ({city}: { city: string }) => {
     return {
         content: [
             {
