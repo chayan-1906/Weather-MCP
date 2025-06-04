@@ -1,21 +1,16 @@
-import {McpServer} from "@modelcontextprotocol/sdk/dist/cjs/server/mcp.js";
-import {StdioServerTransport} from "@modelcontextprotocol/sdk/dist/cjs/server/stdio.js";
-
-import {z} from 'zod';
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from 'zod';
 import express from 'express';
-import {PORT} from "./config/config";
-
+import { PORT } from "./config/config";
 const app = express();
-
 app.use(express.json());
-
 // Create an MCP server
 const server = new McpServer({
     name: 'Weather Data Fetcher',
     version: '1.0.0',
 });
-
-async function getWeatherByCity(city: string) {
+async function getWeatherByCity(city) {
     // const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}&units=metric`);
     /*const response = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=b4d4bb028b0d666876ecfba6cabe947c&units=metric`);
     const responseData = response.data;
@@ -33,29 +28,27 @@ async function getWeatherByCity(city: string) {
             error: responseData,
         }
     }*/
-
     if (city.toLowerCase() === 'patiala') {
         return {
             temp: '30°C',
             forecast: 'Chances of high rain',
-        }
+        };
     }
     if (city.toLowerCase() === 'delhi') {
         return {
             temp: '20°C',
             forecast: 'Chances of high warm winds',
-        }
+        };
     }
     return {
         temp: null,
         forecast: 'Unable to fetch data',
-    }
+    };
 }
-
 // Add an addition tool
 server.tool('getWeatherByCity', {
     city: z.string(),
-}, async ({city}) => {
+}, async ({ city }) => {
     return {
         content: [
             {
@@ -65,13 +58,11 @@ server.tool('getWeatherByCity', {
         ],
     };
 });
-
 // Start receiving messages on stdin and sending messages on stdout
 async function init() {
     const transport = new StdioServerTransport();
     await server.connect(transport);
 }
-
 app.listen(PORT, async () => {
     await init();
     console.log(`OAuth server running on http://localhost:${PORT}`);
