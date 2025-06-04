@@ -1,16 +1,19 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "ESNext",
+    "module": "CommonJS",
     "moduleResolution": "node",
-    "esModuleInterop": true,
+//    "esModuleInterop": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "baseUrl": "./",
+//    "resolveJsonModule": true,
+//    "baseUrl": "./",
     "outDir": "dist",
-    "paths": {
-      "*": ["node_modules/*"]
-    }
+    "strict": true,
+    "esModuleInterop": true
+//    "paths": {
+//      "*": ["node_modules/*"],
+//      "@modelcontextprotocol/sdk": ["node_modules/@modelcontextprotocol/sdk"]
+//    }
   },
-  "include": ["src"]
+  "include": ["src", "declarations.d.ts"]
 }

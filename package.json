@@ -5,9 +5,8 @@
   "main": "dist/server.js",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node src/server.ts",
-    "start": "node dist/server.js",
-    "package": "npm run build && pkg dist/server.js --targets node16-win-x64 --output dist/pkg-weather-mcp.exe"
+    "bundle":   "ncc build dist/server.js -o build",
+    "package":  "npm run build && npm run bundle && pkg build/index.js --target node16-win-x64 --output dist/weather-mcp.exe"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +21,9 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
+    "@vercel/ncc": "^0.38.3",
     "nodemon": "^2.0.20",
+    "pkg": "^5.8.1",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
   },

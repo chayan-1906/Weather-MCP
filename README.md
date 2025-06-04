@@ -2,7 +2,8 @@
     npx ts-node src/utils/updateClaudeConfig.ts
 
 ### Build project (create dist dir)
-npm run build
+    npm run build
+    npm run bundle
 
 ### Create executable (pkg)
-npm run package
+    npm run package
