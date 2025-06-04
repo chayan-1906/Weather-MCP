@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "weather-data": {
+    "weather-mcp": {
       "command": "/opt/homebrew/Cellar/node/23.11.0/bin/ts-node",
       "args": ["/Users/padmanabhadas/Chayan_Personal/NodeJs/mcp-servers/weather-mcp/src/server.ts"]
     }

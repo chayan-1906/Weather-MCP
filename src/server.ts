@@ -3,6 +3,7 @@ import {StdioServerTransport} from "@modelcontextprotocol/sdk/server/stdio";
 import express from "express";
 import {PORT} from "./config/config";
 import * as z from "zod";
+import {addOrUpdateMCPServer} from "./utils/updateClaudeConfig";
 
 const app = express();
 app.use(express.json());
@@ -24,7 +25,7 @@ async function getWeatherByCity(city: string) {
 
 server.tool(
     'getWeatherByCity',
-    {city: (z.string() as any)}, // use zod under the hood
+    {city: (z.string())}, // use zod under the hood
     async ({city}: { city: string }) => {
         const result = await getWeatherByCity(city);
         return {
@@ -43,7 +44,15 @@ async function init() {
     await server.connect(transport);
 }
 
+const serverName = 'weather-mcp';
+const entry = {
+    command: process.execPath,  // e.g. "C:\\Users\\USER\Downloads\\weather-mcp.exe" or "/Users/padmanabhadas"
+    args: [],
+    cwd: process.cwd(),         // wherever the user launched it from
+};
+
 app.listen(PORT, async () => {
     await init();
+    addOrUpdateMCPServer(serverName, entry);
     console.log(`Weather MCP running on http://localhost:${PORT}`);
 });

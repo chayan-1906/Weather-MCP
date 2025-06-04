@@ -55,10 +55,7 @@ function saveConfig(path: string, cfg: MCPConfig) {
     writeFileSync(path, pretty, 'utf8');
 }
 
-function addOrUpdateMCPServer(
-    name: string,
-    serverEntry: MCPConfig['mcpServers'][string]
-) {
+export function addOrUpdateMCPServer(name: string, serverEntry: MCPConfig['mcpServers'][string]) {
     const configPath = getClaudeConfigPath();
     const config = loadConfig(configPath);
 
@@ -70,13 +67,3 @@ function addOrUpdateMCPServer(
     saveConfig(configPath, config);
     console.log(`Updated "${name}" in ${configPath}`);
 }
-
-// Example usage:
-const serverName = 'google-workspaces';
-const entry = {
-    command: '/Users/padmanabhadas/Chayan_Personal/NodeJs/mcp-servers/google-workspace-mcp/start_server.sh',
-    args: [] as string[],
-    cwd: '/Users/padmanabhadas/Chayan_Personal/NodeJs/mcp-servers/google-workspace-mcp',
-};
-
-addOrUpdateMCPServer(serverName, entry);
