@@ -8,15 +8,7 @@
     "license": "ISC",
     "scripts": {
         "dev": "nodemon --exec 'ts-node' src/server.ts",
-        "build:robust": "ts-node build.ts current",
-        "build:robust:all": "ts-node build.ts all",
-        "build:debug": "ts-node debug-build.ts",
-        "build:debug:all": "ts-node debug-build.ts all",
-        "build:fixed": "ts-node fixed-build.ts",
-        "build:fixed:all": "ts-node fixed-build.ts all",
-        "build:clean": "rm -rf ./dist && rm -rf ./.nexe-temp",
-        "start": "node dist/app-linux",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "ts-node build.ts"
     },
     "dependencies": {
         "@modelcontextprotocol/sdk": "^1.11.3",
@@ -24,6 +16,7 @@
         "dotenv": "^16.5.0",
         "express": "^4.21.2",
         "nodemon": "^2.0.22",
+        "postject": "^1.0.0-alpha.6",
         "zod": "^3.24.4"
     },
     "devDependencies": {
