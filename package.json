@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/server.js",
+  "exports": {
+    "./utils": "./dist/index.js"
+  },
   "scripts": {
     "build": "tsc",
-    "bundle":   "ncc build dist/server.js -o build",
-    "package":  "npm run build && npm run bundle && pkg build/index.js --targets node16-win-x64,node16-macos-arm64 --output dist/weather-mcp"
+    "bundle": "ncc build dist/server.js -o build",
+    "package": "ts-node src/scripts/package-script.ts"
   },
   "keywords": [],
   "author": "",
