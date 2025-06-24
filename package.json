@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc",
     "bundle": "ncc build dist/server.js -o build",
-    "package": "ts-node src/scripts/package-script.ts"
+    "package": "ts-node src/scripts/package-script.ts",
+    "postinstall": "npm run build"
   },
   "keywords": [],
   "author": "",
