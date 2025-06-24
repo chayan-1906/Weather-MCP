@@ -2,10 +2,8 @@
   "name": "weather-mcp",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/server.js",
-  "exports": {
-    "./utils": "./dist/index.js"
-  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "bundle": "ncc build dist/server.js -o build",

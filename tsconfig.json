@@ -3,17 +3,11 @@
     "target": "ES2020",
     "module": "CommonJS",
     "moduleResolution": "node",
-//    "esModuleInterop": true,
     "skipLibCheck": true,
-//    "resolveJsonModule": true,
-//    "baseUrl": "./",
     "outDir": "dist",
     "strict": true,
-    "esModuleInterop": true
-//    "paths": {
-//      "*": ["node_modules/*"],
-//      "@modelcontextprotocol/sdk": ["node_modules/@modelcontextprotocol/sdk"]
-//    }
+    "esModuleInterop": true,
+    "declaration": true
   },
   "include": ["src", "declarations.d.ts"]
 }

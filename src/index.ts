@@ -1,1 +1,1 @@
-export * from './tools/getWeather';
+export {setupMcpTools} from './controllers/ToolsController';
